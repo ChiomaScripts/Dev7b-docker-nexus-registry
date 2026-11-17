@@ -147,7 +147,7 @@ I authenticated using the Nexus publishing user, and Docker returned **`Login Su
 
 ```bash
 docker tag python-girls-that-code:1.0 \
-  159.89.153.232:8082/python-girls-that-code:1.0
+  159.**.***.***:8082/python-girls-that-code:1.0
 ```
 
 The first argument is the existing local image reference; the second is the new reference identifying its publishing destination. **`docker tag` creates another image reference; it does not rebuild the image or duplicate its underlying layers.**
@@ -159,7 +159,7 @@ The first argument is the existing local image reference; the second is the new 
 #### Anatomy of the image reference
 
 ```text
-159.89.153.232:8082/python-girls-that-code:1.0
+159.**.***.***:8082/python-girls-that-code:1.0
 └──── registry ────┘ └──── image ──────┘ └tag┘
 ```
 
@@ -169,14 +169,11 @@ The first argument is the existing local image reference; the second is the new 
 
 When a registry hostname is omitted, Docker normally resolves unqualified image names through **Docker Hub** defaults. It does not automatically discover my Nexus instance. That is why the explicit Nexus address matters.
 
-![Anatomy of a Docker image reference](assets/screenshots/06-image-reference-anatomy.png)
-
-*Figure 6 — Image reference breakdown from the learning notes. Source: page 2, lower diagram. The illustrative image name in the diagram differs slightly from the actual `python-girls-that-code` image; the commands in this README use the actual name.*
 
 ### 5.4 Push the image
 
 ```bash
-docker push 159.89.153.232:8082/python-girls-that-code:1.0
+docker push 159.**.***.***:8082/python-girls-that-code:1.0
 ```
 
 The `docker push` command publishes the image's required content and manifest to the named registry. Docker can avoid retransmitting layers that the registry already possesses.
@@ -288,17 +285,17 @@ Run these Docker commands from **any terminal connected to the Docker Desktop En
 docker images
 
 # Authenticate to the hosted Docker registry
-docker login 159.89.153.232:8082
+docker login 159.**.***.***:8082
 
 # Add a registry-qualified tag to the existing image
 docker tag python-girls-that-code:1.0 \
-  159.89.153.232:8082/python-girls-that-code:1.0
+  159.**.***.***:8082/python-girls-that-code:1.0
 
 # Publish the tagged image
-docker push 159.89.153.232:8082/python-girls-that-code:1.0
+docker push 159.**.***.***:8082/python-girls-that-code:1.0
 
 # Later, on an authorised Docker client, retrieve the published image
-docker pull 159.89.153.232:8082/python-girls-that-code:1.0
+docker pull 159.**.***.***:8082/python-girls-that-code:1.0
 ```
 
 > `docker pull` is included as a future-use reference; the supplied screenshots verify the **push** and Nexus Browse result, not a separate pull test.
