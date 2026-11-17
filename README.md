@@ -8,7 +8,11 @@
 >
 > This repository documents the registry infrastructure, image publication workflow, and troubleshooting. The FastAPI application source and Dockerfile remain in **Dev7a**; they are intentionally not duplicated here.
 
-## 1. Project overview
+---
+
+## 01 — Project overview
+
+---
 
 In Dev7a, I containerised my **Python Girls That Code** FastAPI application and ran it locally alongside MongoDB and Mongo Express. That gave me a working Docker image on my local Docker Engine, but it did not make the image available from a dedicated private registry.
 
@@ -18,7 +22,11 @@ The first pushes timed out while finalising some layers. Instead of rebuilding t
 
 **Outcome:** Successfully published `python-girls-that-code:1.0` to a self-hosted Nexus Docker registry and verified it in the Nexus repository browser.
 
-## 2. Why this project matters
+---
+
+## 02 — Why this project matters
+
+---
 
 A Docker image existing on a developer's laptop is not the same as an image being distributed through a registry. Registries provide a shared location from which authorised systems can **push** and **pull** versioned images. This is a foundational workflow for deployment automation and CI/CD: build an application image once, publish it, and let downstream environments retrieve that exact artifact.
 
@@ -52,7 +60,11 @@ flowchart LR
 
 > The diagram represents the artifact flow. The registry was hosted remotely, while Docker commands were run from my Windows machine. Dev7c is a subsequent project, not part of this completed exercise.
 
-## 3. Environment and technologies
+---
+
+## 03 — Environment and technologies
+
+---
 
 | Component | Configuration / role |
 |---|---|
@@ -69,7 +81,11 @@ flowchart LR
 
 **Lab-specific note:** The IP address shown in screenshots and commands is the historical endpoint used for this exercise, not a promise that the server is still available. Replace it with the address of your own registry when reproducing the lab.
 
-## 4. Provisioning and configuring Nexus
+---
+
+## 04 — Provisioning and configuring Nexus
+
+---
 
 ### 4.1 Provision the server and launch Nexus
 
@@ -119,7 +135,11 @@ Example fragment (merge this property into the existing Docker Engine JSON rathe
 
 > **Security and reproducibility:** An insecure registry allows unencrypted HTTP communication. This lab configuration is **not a production recommendation**: registry credentials and image traffic can be exposed in transit. For production, use HTTPS/TLS and restrict access. For a short-lived lab, use a unique disposable credential, minimise firewall exposure, and remove the insecure-registry entry and firewall allowance after the exercise. Do not commit passwords, Docker credential files, or tokens to Git.
 
-## 5. Authenticate, tag and publish the image
+---
+
+## 05 — Authenticate, tag and publish the image
+
+---
 
 ### 5.1 Verify that the existing image is available
 
@@ -178,7 +198,11 @@ docker push 159.**.***.***:8082/python-girls-that-code:1.0
 
 The `docker push` command publishes the image's required content and manifest to the named registry. Docker can avoid retransmitting layers that the registry already possesses.
 
-## 6. Troubleshooting: repeated timeouts during push
+---
+
+## 06 — Troubleshooting: repeated timeouts during push
+
+---
 
 The first push did not complete. Some layers were marked **`Pushed`**, while other transfers reached **100%** before Docker reported:
 
@@ -258,7 +282,11 @@ After several unsuccessful attempts, a subsequent push succeeded. Docker reporte
 4. A successful final digest is stronger evidence of a completed push than individual layer progress bars.
 5. Troubleshooting should distinguish **observations**, **possible causes**, and **confirmed root causes**.
 
-## 7. Verify the published artifact in Nexus
+---
+
+## 07 — Verify the published artifact in Nexus
+
+---
 
 In the Nexus UI, I opened **Browse → `docker-hosted`** and found the image repository, its manifests, and the `1.0` tag. This corroborated the successful CLI output and confirmed that the artifact was present in the registry.
 
@@ -276,7 +304,11 @@ In the Nexus UI, I opened **Browse → `docker-hosted`** and found the image rep
 
 **Practical implication:** A downstream deployment can reference `registry/image:tag`; for stronger artifact pinning it can reference a digest, provided that the image and registry support the intended pull workflow.
 
-## 8. Commands quick reference
+---
+
+## 08 — Commands quick reference
+
+---
 
 Run these Docker commands from **any terminal connected to the Docker Desktop Engine**; the working directory is not important for `images`, `login`, `tag`, or `push`.
 
@@ -300,7 +332,11 @@ docker pull 159.**.***.***:8082/python-girls-that-code:1.0
 
 > `docker pull` is included as a future-use reference; the supplied screenshots verify the **push** and Nexus Browse result, not a separate pull test.
 
-## 9. Operational and security considerations
+---
+
+## 09 — Operational and security considerations
+
+---
 
 This was a **temporary learning environment**, not a hardened production registry. Important distinctions to retain:
 
@@ -312,7 +348,11 @@ This was a **temporary learning environment**, not a hardened production registr
 - Once the lab is complete, remove temporary firewall allowances, clear insecure-registry configuration, and delete the droplet if no longer needed to avoid ongoing charges.
 
 
-## 10. Project Reflection
+---
+
+## 10 — Project Reflection
+
+---
 
 This project marked another important step in my DevOps learning journey, extending my understanding of Docker beyond building and running containers to managing how container images are published, stored and distributed.
 
@@ -328,7 +368,11 @@ Ultimately, Dev7b reinforced that **DevOps engineering is not simply about execu
 
 
 
-## 11. Portfolio Navigation
+---
+
+## 11 — Portfolio Navigation
+
+---
 
 **Project:** Dev7b — Private Docker Registry with Sonatype Nexus
 
