@@ -311,7 +311,7 @@ This was a **temporary learning environment**, not a hardened production registr
 - Destroying the DigitalOcean droplet without preserving Nexus data can permanently remove the hosted artifacts.
 - Once the lab is complete, remove temporary firewall allowances, clear insecure-registry configuration, and delete the droplet if no longer needed to avoid ongoing charges.
 
-## 10. What I learned
+## 10. Project Reflection
 
 This project consolidated several concepts into one end-to-end artifact publishing exercise:
 
