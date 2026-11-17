@@ -4,7 +4,7 @@
 
 ![Docker](https://img.shields.io/badge/Docker-Image%20Registry-2496ED?logo=docker&logoColor=white) ![Nexus](https://img.shields.io/badge/Sonatype%20Nexus-Hosted%20Repository-1B7F79) ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-Ubuntu-0080FF?logo=digitalocean&logoColor=white) ![Status](https://img.shields.io/badge/Status-Completed-success)
 
-> **Learning path:** [Dev7a — Dockerising Python Girls That Code](https://github.com/ChiomaScripts/Dev7a-docker-python) → **Dev7b — Publishing the image to Nexus (this repository)** → **Dev7c — Docker Compose and persistent volumes (next)**.
+> **Project path:** [Dev7a — Dockerising Python Girls That Code](https://github.com/ChiomaScripts/Dev7a-docker-python) → **Dev7b — Publishing the image to Nexus (this repository)** → **Dev7c — Docker Compose and persistent volumes (next)**.
 >
 > This repository documents the registry infrastructure, image publication workflow, and troubleshooting. The FastAPI application source and Dockerfile remain in **Dev7a**; they are intentionally not duplicated here.
 
