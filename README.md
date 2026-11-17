@@ -65,7 +65,7 @@ flowchart LR
 | Blob store | `chioma-store` |
 | Client | Docker Desktop on Windows; Git Bash / terminal |
 | Application image | `python-girls-that-code:1.0` from Dev7a |
-| Registry image reference used in the lab | `159.89.153.232:8082/python-girls-that-code:1.0` |
+| Registry image reference used in the lab | `159.**.***.***:8082/python-girls-that-code:1.0` |
 
 **Lab-specific note:** The IP address shown in screenshots and commands is the historical endpoint used for this exercise, not a promise that the server is still available. Replace it with the address of your own registry when reproducing the lab.
 
@@ -113,7 +113,7 @@ Example fragment (merge this property into the existing Docker Engine JSON rathe
 
 ```json
 {
-  "insecure-registries": ["159.89.153.232:8082"]
+  "insecure-registries": ["159.**.***.***:8082"]
 }
 ```
 
@@ -134,7 +134,7 @@ docker images
 ### 5.2 Log in to the Nexus registry
 
 ```bash
-docker login 159.89.153.232:8082
+docker login 159.**.***.***:8082
 ```
 
 I authenticated using the Nexus publishing user, and Docker returned **`Login Succeeded`**. This confirms authentication; it does not by itself prove that the account can push every repository.
