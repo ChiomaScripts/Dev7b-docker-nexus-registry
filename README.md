@@ -340,10 +340,8 @@ Ultimately, Dev7b reinforced that **DevOps engineering is not simply about execu
 
 **Previous projects:**
 - [Dev7a — Docker for Local Development](https://github.com/ChiomaScripts/Dev7a-docker-python)
-- Dev6 — Nexus Artifact Repository Management
-
-**Next project:**
-- Dev7c — Docker Compose and Persistent Volumes *(upcoming)*
+- [Dev6 — Nexus Artifact Repository Management](https://github.com/ChiomaScripts/Dev6-nexus-artifact-repository)
+- [Dev5 — Cloud Infrastructure & Java Application Deployment](https://github.com/ChiomaScripts/Dev5-cloud-iaas)
 
 ---
 
