@@ -311,15 +311,40 @@ This was a **temporary learning environment**, not a hardened production registr
 - Destroying the DigitalOcean droplet without preserving Nexus data can permanently remove the hosted artifacts.
 - Once the lab is complete, remove temporary firewall allowances, clear insecure-registry configuration, and delete the droplet if no longer needed to avoid ongoing charges.
 
+
 ## 10. Project Reflection
 
-This project consolidated several concepts into one end-to-end artifact publishing exercise:
+This project marked another important step in my DevOps learning journey, extending my understanding of Docker beyond building and running containers to managing how container images are published, stored and distributed.
 
-- How **Nexus Repository Manager** serves as a self-hosted Docker registry.
-- The distinction between **repository management UI** and **Docker registry connector** ports.
-- How **Docker Bearer Token Realm**, publishing roles and users contribute to registry access.
-- Why a locally built image must be **tagged with a registry-qualified reference** before pushing to a custom registry.
-- Why **tagging is not rebuilding** and why `docker build` was unnecessary here.
-- How **layer reuse** makes subsequent pushes efficient.
-- How to approach a real registry timeout using Linux process, port, disk, memory and log diagnostics.
-- Why a successful push should be verified both through the **CLI digest** and the **Nexus repository browser**.
+Having successfully containerised my Python Girls That Code application in Dev7a, I initially approached this exercise as a prerequisite for my next project involving Docker Compose. My intention was simply to publish the existing application image to Nexus so that it could be retrieved during deployment. However, the process evolved into a standalone learning experience involving repository configuration, authentication, image versioning and troubleshooting.
+
+One of the most valuable lessons came from the repeated Docker push failures. Although several attempts timed out while finalising image layers, the eventual successful push revealed that previously uploaded layers had been retained by Nexus. Seeing Docker report `Layer already exists` reinforced my understanding of Docker's layered image architecture and how registries can reuse existing content rather than requiring every layer to be uploaded again.
+
+The troubleshooting process was equally instructive. Rather than immediately rebuilding the application image or assuming the problem was caused by my internet connection, I investigated the Nexus server's memory utilisation, available disk space, running processes, listening ports and application logs. While the exact cause of the timeout was not conclusively established, the experience strengthened my ability to investigate infrastructure-related problems systematically and distinguish observations from assumptions.
+
+This project also clarified the relationship between Docker Engine and a Docker registry. Building an image locally is only one stage of the container lifecycle; making that image available to other environments requires a reliable distribution mechanism, appropriate authentication and an understanding of how image references, tags, manifests and digests work together.
+
+Ultimately, Dev7b reinforced that **DevOps engineering is not simply about executing commands successfully, but about understanding the systems behind those commands, diagnosing unexpected behaviour and building reproducible workflows that support application delivery.**
+
+
+
+## 11. Portfolio Navigation
+
+**Project:** Dev7b — Private Docker Registry with Sonatype Nexus
+
+**Module:** 7 — Containers with Docker
+
+**Application:** Python Girls That Code
+
+**Portfolio:** [DevOps Engineering Portfolio](https://github.com/ChiomaScripts/DevOps-Portfolio)
+
+**Previous projects:**
+- [Dev7a — Docker for Local Development](https://github.com/ChiomaScripts/Dev7a-docker-python)
+- Dev6 — Nexus Artifact Repository Management
+
+**Next project:**
+- Dev7c — Docker Compose and Persistent Volumes *(upcoming)*
+
+---
+
+*Built through hands-on experimentation, troubleshooting and continuous learning.*
